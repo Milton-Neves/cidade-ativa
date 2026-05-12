@@ -6,7 +6,7 @@ Plataforma de gestão urbana e solicitações públicas desenvolvida com Angular
 
 ## Visão Geral
 
-O CidadeAtiva é um projeto de portfólio criado para simular uma plataforma moderna de gestão pública municipal.
+O CidadeAtiva é um projeto criado para simular uma plataforma moderna de gestão pública municipal.
 
 A aplicação permite o recebimento e gerenciamento de solicitações urbanas através de formulários integrados via webhook, oferecendo um painel administrativo para acompanhamento e análise das demandas.
 
