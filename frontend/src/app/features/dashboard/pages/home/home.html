@@ -1,11 +1,23 @@
 <div class="space-y-6">
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-    <app-metric-card title="Usuários ativos" value="1.245" description="+12% esse mês" />
+    @for (metric of metrics; track metric.title) {
+      <app-metric-card
+        [title]="metric.title"
+        [value]="metric.value"
+        [description]="metric.description"
+      />
+    }
+  </div>
 
-    <app-metric-card title="Eventos hoje" value="18" description="3 novos eventos" />
+  <div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+    <div class="xl:col-span-2">
+      <app-line-chart />
+    </div>
 
-    <app-metric-card title="Participação" value="78%" description="Alta atividade" />
+    <app-ranking-list />
 
-    <app-metric-card title="Ranking" value="#12" description="Subiu 4 posições" />
+    <app-activity-feed />
+
+    <app-event-table />
   </div>
 </div>

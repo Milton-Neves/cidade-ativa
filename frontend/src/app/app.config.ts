@@ -2,7 +2,7 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideZard } from '@/shared/core/provider/providezard';
+import { provideZard } from '@/shared/zard-core/provider/providezard';
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -1,0 +1,44 @@
+<div class="rounded-2xl border border-white/10 bg-zinc-900 p-6">
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold text-white">Eventos recentes</h2>
+
+    <p class="text-sm text-zinc-400">Atividades cadastradas na plataforma</p>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead>
+        <tr class="border-b border-white/10 text-left text-sm text-zinc-400">
+          <th class="pb-4">Evento</th>
+          <th class="pb-4">Bairro</th>
+          <th class="pb-4">Participantes</th>
+          <th class="pb-4">Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (event of events; track event.name) {
+          <tr class="border-b border-white/5">
+            <td class="py-4 text-white">
+              {{ event.name }}
+            </td>
+
+            <td class="py-4 text-zinc-300">
+              {{ event.district }}
+            </td>
+
+            <td class="py-4 text-zinc-300">
+              {{ event.participants }}
+            </td>
+
+            <td class="py-4">
+              <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-sm text-emerald-400">
+                {{ event.status }}
+              </span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

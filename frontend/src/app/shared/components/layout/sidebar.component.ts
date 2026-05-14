@@ -21,7 +21,7 @@ import {
   sidebarTriggerVariants,
   sidebarVariants,
 } from '@/shared/components/layout/layout.variants';
-import { ZardStringTemplateOutletDirective } from '@/shared/core/directives/string-template-outlet/string-template-outlet.directive';
+import { ZardStringTemplateOutletDirective } from '@/shared/zard-core/directives/string-template-outlet/string-template-outlet.directive';
 import { mergeClasses } from '@/shared/utils/merge-classes';
 
 @Component({
