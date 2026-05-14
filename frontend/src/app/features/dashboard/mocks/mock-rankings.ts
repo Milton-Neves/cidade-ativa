@@ -1,17 +1,22 @@
-export const MOCK_RANKINGS = [
+import { RankingUser } from '../models/ranking.model';
+
+export const MOCK_RANKINGS: RankingUser[] = [
   {
+    id: 1,
+    name: 'Milton',
+    score: 980,
     position: 1,
-    name: 'Centro',
-    score: '+12%',
   },
   {
+    id: 2,
+    name: 'João',
+    score: 910,
     position: 2,
-    name: 'Tirol',
-    score: '+8%',
   },
   {
+    id: 3,
+    name: 'Maria',
+    score: 870,
     position: 3,
-    name: 'Petrópolis',
-    score: '+5%',
   },
 ];

@@ -1,6 +1,6 @@
+import { Activity } from '@/features/dashboard/models/activity.model';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { MOCK_ACTIVITIES } from '../../../mocks/mock-activities';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-activity-feed',
@@ -10,5 +10,5 @@ import { MOCK_ACTIVITIES } from '../../../mocks/mock-activities';
   styleUrl: './activity-feed.css',
 })
 export class ActivityFeed {
-  activities = MOCK_ACTIVITIES;
+  @Input() activities: Activity[] = [];
 }

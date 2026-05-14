@@ -1,6 +1,6 @@
+import { EventItem } from '@/features/dashboard/models/event.model';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { MOCK_EVENTS } from '../../../mocks/mock-events';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-event-table',
@@ -10,5 +10,5 @@ import { MOCK_EVENTS } from '../../../mocks/mock-events';
   styleUrl: './event-table.css',
 })
 export class EventTable {
-  events = MOCK_EVENTS;
+  @Input() events: EventItem[] = [];
 }
