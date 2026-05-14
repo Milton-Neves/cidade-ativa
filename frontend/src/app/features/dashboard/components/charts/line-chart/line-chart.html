@@ -1,0 +1,18 @@
+<div class="rounded-2xl border border-white/10 bg-zinc-900 p-6 h-100">
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold text-white">Participação Mensal</h2>
+
+    <p class="text-sm text-zinc-400">Evolução da participação nos eventos</p>
+  </div>
+
+  <div class="h-75">
+    <canvas
+      baseChart
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+      type="line"
+    >
+    </canvas>
+  </div>
+</div>

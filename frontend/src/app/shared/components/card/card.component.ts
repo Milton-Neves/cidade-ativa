@@ -12,7 +12,7 @@ import {
 import type { ClassValue } from 'clsx';
 
 import { ZardButtonComponent } from '@/shared/components/button/button.component';
-import { ZardIdDirective, ZardStringTemplateOutletDirective } from '@/shared/core';
+import { ZardIdDirective, ZardStringTemplateOutletDirective } from '@/shared/zard-core';
 import { mergeClasses } from '@/shared/utils/merge-classes';
 
 import { cardBodyVariants, cardFooterVariants, cardHeaderVariants, cardVariants } from './card.variants';
