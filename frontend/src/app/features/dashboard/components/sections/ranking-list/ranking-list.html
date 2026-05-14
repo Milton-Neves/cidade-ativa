@@ -1,0 +1,35 @@
+<div class="rounded-2xl border border-white/10 bg-zinc-900 p-6">
+  <div class="mb-6">
+    <h2 class="text-xl font-semibold text-white">Ranking de bairros</h2>
+
+    <p class="text-sm text-zinc-400">Regiões mais ativas da plataforma</p>
+  </div>
+
+  <div class="space-y-4">
+    @for (item of rankings; track item.position) {
+      <div
+        class="flex items-center justify-between rounded-xl border border-white/5 bg-zinc-800/50 p-4"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-700 text-sm font-bold text-white"
+          >
+            {{ item.position }}
+          </div>
+
+          <div>
+            <p class="font-medium text-white">
+              {{ item.name }}
+            </p>
+
+            <p class="text-sm text-zinc-400">Crescimento mensal</p>
+          </div>
+        </div>
+
+        <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-sm font-medium text-emerald-400">
+          {{ item.score }}
+        </span>
+      </div>
+    }
+  </div>
+</div>

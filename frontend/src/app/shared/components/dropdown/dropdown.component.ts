@@ -21,7 +21,7 @@ import {
 
 import type { ClassValue } from 'clsx';
 
-import { ZardIdDirective } from '@/shared/core/directives/id.directive';
+import { ZardIdDirective } from '@/shared/zard-core/directives/id.directive';
 import { mergeClasses } from '@/shared/utils/merge-classes';
 
 import { dropdownContentVariants } from './dropdown.variants';

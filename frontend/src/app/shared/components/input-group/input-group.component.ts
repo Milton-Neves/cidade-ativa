@@ -13,11 +13,11 @@ import {
 
 import type { ClassValue } from 'clsx';
 
-import { ZardIdDirective } from '@/shared/core';
+import { ZardIdDirective } from '@/shared/zard-core';
 import {
   isTemplateRef,
   ZardStringTemplateOutletDirective,
-} from '@/shared/core/directives/string-template-outlet/string-template-outlet.directive';
+} from '@/shared/zard-core/directives/string-template-outlet/string-template-outlet.directive';
 import { mergeClasses } from '@/shared/utils/merge-classes';
 
 import {

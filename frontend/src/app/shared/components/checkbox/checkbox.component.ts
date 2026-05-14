@@ -15,7 +15,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck } from '@ng-icons/lucide';
 import type { ClassValue } from 'clsx';
 
-import { ZardIdDirective } from '@/shared/core';
+import { ZardIdDirective } from '@/shared/zard-core';
 import { mergeClasses, noopFn } from '@/shared/utils/merge-classes';
 
 import {
