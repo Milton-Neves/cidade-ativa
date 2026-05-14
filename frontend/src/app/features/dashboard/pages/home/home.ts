@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LineChart } from '../../components/charts/line-chart/line-chart';
-import { MetricCard } from '../../components/ui/metric-card/metric-card';
-import { RankingList } from '../../components/sections/ranking-list/ranking-list';
 import { ActivityFeed } from '../../components/sections/activity-feed/activity-feed';
 import { EventTable } from '../../components/sections/event-table/event-table';
-import { MOCK_METRICS } from '../../mocks/mock-metrics';
+import { RankingList } from '../../components/sections/ranking-list/ranking-list';
+import { MetricCard } from '../../components/ui/metric-card/metric-card';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-home',
@@ -14,5 +14,10 @@ import { MOCK_METRICS } from '../../mocks/mock-metrics';
   styleUrl: './home.css',
 })
 export class Home {
-  metrics = MOCK_METRICS;
+  private dashboardService = inject(DashboardService);
+
+  metrics = this.dashboardService.getMetrics();
+  rankings = this.dashboardService.getRankings();
+  activities = this.dashboardService.getActivities();
+  events = this.dashboardService.getEvents();
 }

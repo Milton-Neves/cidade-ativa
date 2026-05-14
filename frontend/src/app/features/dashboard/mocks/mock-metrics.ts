@@ -1,4 +1,6 @@
-export const MOCK_METRICS = [
+import { Metric } from '../models/metric.model';
+
+export const MOCK_METRICS: Metric[] = [
   {
     title: 'Usuários ativos',
     value: '1.245',

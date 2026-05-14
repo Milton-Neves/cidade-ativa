@@ -17,14 +17,14 @@
       </thead>
 
       <tbody>
-        @for (event of events; track event.name) {
+        @for (event of events; track event.id) {
           <tr class="border-b border-white/5">
             <td class="py-4 text-white">
-              {{ event.name }}
+              {{ event.title }}
             </td>
 
             <td class="py-4 text-zinc-300">
-              {{ event.district }}
+              {{ event.location }}
             </td>
 
             <td class="py-4 text-zinc-300">

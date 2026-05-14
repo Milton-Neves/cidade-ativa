@@ -1,26 +1,18 @@
-export const MOCK_EVENTS = [
+import { EventItem } from '../models/event.model';
+
+export const MOCK_EVENTS: EventItem[] = [
   {
-    name: 'Mutirão Praia Limpa',
-    district: 'Ponta Negra',
-    participants: 48,
-    status: 'Ativo',
-  },
-  {
-    name: 'Corrida Solidária',
-    district: 'Tirol',
+    id: 1,
+    title: 'Corrida Urbana',
+    location: 'Natal/RN',
     participants: 120,
-    status: 'Encerrado',
-  },
-  {
-    name: 'Feira Comunitária',
-    district: 'Centro',
-    participants: 76,
     status: 'Ativo',
   },
   {
-    name: 'Ação Verde',
-    district: 'Petrópolis',
-    participants: 33,
-    status: 'Pendente',
+    id: 2,
+    title: 'Pedalada Coletiva',
+    location: 'Parnamirim/RN',
+    participants: 80,
+    status: 'Ativo',
   },
 ];

@@ -1,22 +1,16 @@
-export const MOCK_ACTIVITIES = [
+import { Activity } from '../models/activity.model';
+
+export const MOCK_ACTIVITIES: Activity[] = [
   {
-    user: 'Maria',
-    action: 'criou um evento',
-    time: 'há 2 min',
+    id: 1,
+    user: 'Milton',
+    action: 'Criou um evento',
+    date: '14/05/2026',
   },
   {
+    id: 2,
     user: 'João',
-    action: 'confirmou presença',
-    time: 'há 10 min',
-  },
-  {
-    user: 'Centro',
-    action: 'subiu no ranking',
-    time: 'há 25 min',
-  },
-  {
-    user: 'Praia Limpa',
-    action: 'evento iniciado',
-    time: 'há 40 min',
+    action: 'Entrou no ranking',
+    date: '14/05/2026',
   },
 ];
