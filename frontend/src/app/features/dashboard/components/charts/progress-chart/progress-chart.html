@@ -6,7 +6,7 @@
   </div>
 
   <div class="space-y-5">
-    @for (item of items; track item.name) {
+    @for (item of items(); track item.name) {
       <div>
         <div class="mb-2 flex items-center justify-between">
           <span class="text-sm text-zinc-300">

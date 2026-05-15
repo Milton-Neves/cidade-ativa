@@ -1,6 +1,6 @@
 import { Activity } from '@/features/dashboard/models/activity.model';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-activity-feed',
@@ -10,5 +10,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './activity-feed.css',
 })
 export class ActivityFeed {
-  @Input() activities: Activity[] = [];
+  activities = input.required<Activity[]>();
 }

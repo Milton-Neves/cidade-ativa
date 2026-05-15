@@ -6,7 +6,7 @@
   </div>
 
   <div class="space-y-4">
-    @for (user of rankings; track user.position) {
+    @for (user of rankings(); track user.position) {
       <div class="flex items-center justify-between rounded-xl bg-zinc-800/50 p-3">
         <div class="flex items-center gap-3">
           <div
