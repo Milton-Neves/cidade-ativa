@@ -1,6 +1,9 @@
 export interface RankingUser {
-  id: number;
   name: string;
+
   score: number;
+
+  level: 'gold' | 'silver' | 'bronze';
+
   position: number;
 }

@@ -1,23 +1,39 @@
 <div class="space-y-6">
+  <div class="flex justify-end">
+    <button
+      (click)="openTally()"
+      class="rounded-xl bg-emerald-500 px-5 py-3 font-medium text-black"
+    >
+      Nova participação
+    </button>
+    <app-tally-sheet [isOpen]="isTallyOpen" />
+  </div>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-    @for (metric of metrics; track metric.title) {
+    @for (metric of metrics(); track metric.title) {
       <app-metric-card
         [title]="metric.title"
         [value]="metric.value"
         [description]="metric.description"
+        [trend]="metric.trend"
+        [percentage]="metric.percentage"
       />
     }
   </div>
 
   <div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
     <div class="xl:col-span-2">
-      <app-line-chart />
+      <app-line-chart [analytics]="analytics()" />
     </div>
 
-    <app-ranking-list [rankings]="rankings" />
+    <app-ranking-list [rankings]="rankings()" />
 
-    <app-activity-feed [activities]="activities" />
+    <app-activity-feed [activities]="activities()" />
 
-    <app-event-table [events]="events" />
+    <app-progress-chart [items]="progress()" />
+
   </div>
+
+  <app-event-table [events]="events()" />
+
+
 </div>
