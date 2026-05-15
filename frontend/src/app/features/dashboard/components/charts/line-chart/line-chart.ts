@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 
@@ -13,13 +13,36 @@ import { Analytics } from '../../../models/analytics.model';
   templateUrl: './line-chart.html',
   styleUrl: './line-chart.css',
 })
-export class LineChart implements OnChanges {
-  @Input() analytics!: Analytics;
+export class LineChart {
+  analytics = input.required<Analytics>();
 
-  public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: [],
-    datasets: [],
-  };
+  public lineChartData = computed<ChartConfiguration<'line'>['data']>(() => ({
+    labels: this.analytics().labels,
+
+    datasets: [
+      {
+        data: this.analytics().users,
+        label: 'Usuários',
+        tension: 0.4,
+        fill: true,
+      },
+      {
+        data: this.analytics().events,
+        label: 'Eventos',
+        tension: 0.4,
+      },
+      {
+        data: this.analytics().participation,
+        label: 'Participação',
+        tension: 0.4,
+      },
+      {
+        data: this.analytics().completedActivities,
+        label: 'Atividades',
+        tension: 0.4,
+      },
+    ],
+  }));
 
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
@@ -46,35 +69,4 @@ export class LineChart implements OnChanges {
   };
 
   public lineChartLegend = true;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['analytics'] && this.analytics) {
-      this.lineChartData = {
-        labels: this.analytics.labels,
-        datasets: [
-          {
-            data: this.analytics.users,
-            label: 'Usuários',
-            tension: 0.4,
-            fill: true,
-          },
-          {
-            data: this.analytics.events,
-            label: 'Eventos',
-            tension: 0.4,
-          },
-          {
-            data: this.analytics.participation,
-            label: 'Participação',
-            tension: 0.4,
-          },
-          {
-            data: this.analytics.completedActivities,
-            label: 'Atividades',
-            tension: 0.4,
-          },
-        ],
-      };
-    }
-  }
 }

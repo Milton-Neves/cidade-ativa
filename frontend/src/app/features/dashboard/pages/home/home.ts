@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { LineChart } from '../../components/charts/line-chart/line-chart';
 import { ProgressChart } from '../../components/charts/progress-chart/progress-chart';
 import { ActivityFeed } from '../../components/sections/activity-feed/activity-feed';
@@ -48,6 +48,22 @@ export class Home {
   });
 
   progress = toSignal(this.dashboardService.getProgress(), { initialValue: [] });
+
+  topRankings = computed(() => this.rankings().slice(0, 3));
+
+  activeEvents = computed(() => this.events().filter((event) => event.status === 'Ativo'));
+
+  activeEventsCount = computed(() => this.activeEvents().length);
+
+  averageParticipation = computed(() => {
+    const data = this.analytics().participation;
+
+    if (!data.length) return 0;
+
+    const total = data.reduce((acc, value) => acc + value, 0);
+
+    return Math.round(total / data.length);
+  });
 
   openTally() {
     this.isTallyOpen = true;
