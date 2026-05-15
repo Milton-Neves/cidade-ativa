@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-metric-card',
@@ -8,7 +8,13 @@ import { Component, input } from '@angular/core';
   styleUrl: './metric-card.css',
 })
 export class MetricCard {
-  title = input('');
-  value = input('');
-  description = input('');
+  @Input() title = '';
+
+  @Input() value = '';
+
+  @Input() description = '';
+
+  @Input() trend: 'up' | 'down' = 'up';
+
+  @Input() percentage = '';
 }

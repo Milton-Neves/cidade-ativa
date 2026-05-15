@@ -1,1 +1,28 @@
-<p>progress-chart works!</p>
+<div class="rounded-2xl bg-zinc-900 p-5 shadow">
+  <div class="mb-6">
+    <h2 class="text-lg font-semibold text-white">Participação por Região</h2>
+
+    <p class="text-sm text-zinc-500">Engajamento da população</p>
+  </div>
+
+  <div class="space-y-5">
+    @for (item of items; track item.name) {
+      <div>
+        <div class="mb-2 flex items-center justify-between">
+          <span class="text-sm text-zinc-300">
+            {{ item.name }}
+          </span>
+
+          <span class="text-sm font-semibold text-white"> {{ item.percentage }}% </span>
+        </div>
+
+        <div class="h-3 rounded-full bg-zinc-800">
+          <div
+            class="h-3 rounded-full bg-emerald-500 transition-all duration-500"
+            [style.width.%]="item.percentage"
+          ></div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

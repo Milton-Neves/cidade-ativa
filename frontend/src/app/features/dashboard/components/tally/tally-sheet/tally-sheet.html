@@ -1,0 +1,21 @@
+@if (isOpen) {
+  <div class="fixed inset-0 z-40 bg-black/60" (click)="close()"></div>
+
+  <div
+    class="fixed right-0 top-0 z-50 flex h-screen w-full max-w-2xl flex-col bg-zinc-950 shadow-2xl"
+  >
+    <div class="flex items-center justify-between border-b border-zinc-800 p-5">
+      <div>
+        <h2 class="text-lg font-semibold text-white">Nova participação</h2>
+
+        <p class="text-sm text-zinc-500">Envie sua sugestão ou ocorrência</p>
+      </div>
+
+      <button (click)="close()" class="text-zinc-400 transition hover:text-white">✕</button>
+    </div>
+
+    <div class="flex-1 overflow-hidden">
+      <iframe src="https://tally.so/r/SEU_LINK" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </div>
+}

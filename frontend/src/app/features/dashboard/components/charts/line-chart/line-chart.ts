@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 
 import { BaseChartDirective } from 'ng2-charts';
+
+import { Analytics } from '../../../models/analytics.model';
 
 @Component({
   selector: 'app-line-chart',
@@ -10,23 +13,68 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './line-chart.html',
   styleUrl: './line-chart.css',
 })
-export class LineChart {
+export class LineChart implements OnChanges {
+  @Input() analytics!: Analytics;
+
   public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-    datasets: [
-      {
-        data: [120, 190, 170, 220, 260, 310],
-        label: 'Participação',
-        tension: 0.4,
-        fill: true,
-      },
-    ],
+    labels: [],
+    datasets: [],
   };
 
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: '#fff',
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#999',
+        },
+      },
+      y: {
+        ticks: {
+          color: '#999',
+        },
+      },
+    },
   };
 
   public lineChartLegend = true;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['analytics'] && this.analytics) {
+      this.lineChartData = {
+        labels: this.analytics.labels,
+        datasets: [
+          {
+            data: this.analytics.users,
+            label: 'Usuários',
+            tension: 0.4,
+            fill: true,
+          },
+          {
+            data: this.analytics.events,
+            label: 'Eventos',
+            tension: 0.4,
+          },
+          {
+            data: this.analytics.participation,
+            label: 'Participação',
+            tension: 0.4,
+          },
+          {
+            data: this.analytics.completedActivities,
+            label: 'Atividades',
+            tension: 0.4,
+          },
+        ],
+      };
+    }
+  }
 }
