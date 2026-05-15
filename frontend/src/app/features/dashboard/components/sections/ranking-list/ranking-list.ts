@@ -1,7 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { MOCK_RANKINGS } from '../../../mocks/mock-rankings';
 import { RankingUser } from '@/features/dashboard/models/ranking.model';
+import { CommonModule } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-ranking-list',
@@ -11,5 +10,5 @@ import { RankingUser } from '@/features/dashboard/models/ranking.model';
   styleUrl: './ranking-list.css',
 })
 export class RankingList {
-  @Input() rankings: RankingUser[] = [];
+  rankings = input.required<RankingUser[]>();
 }

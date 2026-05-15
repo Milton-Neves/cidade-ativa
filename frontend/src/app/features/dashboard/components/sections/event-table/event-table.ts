@@ -1,6 +1,6 @@
 import { EventItem } from '@/features/dashboard/models/event.model';
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-event-table',
@@ -10,5 +10,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './event-table.css',
 })
 export class EventTable {
-  @Input() events: EventItem[] = [];
+  events = input.required<EventItem[]>();
 }
