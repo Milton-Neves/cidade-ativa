@@ -1,32 +1,35 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
-import { MOCK_METRICS } from '../mocks/mock-metrics';
-import { MOCK_RANKINGS } from '../mocks/mock-rankings';
-import { MOCK_ACTIVITIES } from '../mocks/mock-activities';
-import { MOCK_EVENTS } from '../mocks/mock-events';
 
-import { Metric } from '../models/metric.model';
-import { RankingUser } from '../models/ranking.model';
-import { Activity } from '../models/activity.model';
-import { EventItem } from '../models/event.model';
+import { DashboardApiService } from './dashboard-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  getMetrics(): Metric[] {
-    return MOCK_METRICS;
+  private readonly dashboardApi = inject(DashboardApiService);
+
+  getMetrics() {
+    return this.dashboardApi.getMetrics();
   }
 
-  getRankings(): RankingUser[] {
-    return MOCK_RANKINGS;
+  getRankings() {
+    return this.dashboardApi.getRankings();
   }
 
-  getActivities(): Activity[] {
-    return MOCK_ACTIVITIES;
+  getActivities() {
+    return this.dashboardApi.getActivities();
   }
 
-  getEvents(): EventItem[] {
-    return MOCK_EVENTS;
+  getEvents() {
+    return this.dashboardApi.getEvents();
+  }
+
+  getAnalytics() {
+    return this.dashboardApi.getAnalytics();
+  }
+
+  getProgress() {
+    return this.dashboardApi.getProgress();
   }
 }

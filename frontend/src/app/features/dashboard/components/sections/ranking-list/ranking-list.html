@@ -1,34 +1,40 @@
-<div class="rounded-2xl border border-white/10 bg-zinc-900 p-6">
+<div class="rounded-2xl bg-zinc-900 p-5 shadow">
   <div class="mb-6">
-    <h2 class="text-xl font-semibold text-white">Ranking de bairros</h2>
+    <h2 class="text-lg font-semibold text-white">Top Participantes</h2>
 
-    <p class="text-sm text-zinc-400">Regiões mais ativas da plataforma</p>
+    <p class="text-sm text-zinc-500">Ranking de engajamento cidadão</p>
   </div>
 
   <div class="space-y-4">
-    @for (item of rankings; track item.position) {
-      <div
-        class="flex items-center justify-between rounded-xl border border-white/5 bg-zinc-800/50 p-4"
-      >
-        <div class="flex items-center gap-4">
+    @for (user of rankings; track user.position) {
+      <div class="flex items-center justify-between rounded-xl bg-zinc-800/50 p-3">
+        <div class="flex items-center gap-3">
           <div
             class="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-700 text-sm font-bold text-white"
           >
-            {{ item.position }}
+            {{ user.position }}
           </div>
 
           <div>
             <p class="font-medium text-white">
-              {{ item.name }}
+              {{ user.name }}
             </p>
 
-            <p class="text-sm text-zinc-400">Crescimento mensal</p>
+            <p class="text-sm text-zinc-400">{{ user.score }} pontos</p>
           </div>
         </div>
 
-        <span class="rounded-full bg-emerald-500/20 px-3 py-1 text-sm font-medium text-emerald-400">
-          {{ item.score }}
-        </span>
+        <div
+          class="rounded-full px-3 py-1 text-xs font-semibold"
+          [class.bg-yellow-500/20]="user.level === 'gold'"
+          [class.text-yellow-400]="user.level === 'gold'"
+          [class.bg-zinc-400/20]="user.level === 'silver'"
+          [class.text-zinc-300]="user.level === 'silver'"
+          [class.bg-amber-700/20]="user.level === 'bronze'"
+          [class.text-amber-500]="user.level === 'bronze'"
+        >
+          {{ user.level }}
+        </div>
       </div>
     }
   </div>

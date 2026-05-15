@@ -2,21 +2,27 @@ import { RankingUser } from '../models/ranking.model';
 
 export const MOCK_RANKINGS: RankingUser[] = [
   {
-    id: 1,
-    name: 'Milton',
-    score: 980,
+    name: 'Carlos Silva',
+    score: 1840,
+    level: 'gold',
     position: 1,
   },
   {
-    id: 2,
-    name: 'João',
-    score: 910,
+    name: 'Marina Costa',
+    score: 1630,
+    level: 'silver',
     position: 2,
   },
   {
-    id: 3,
-    name: 'Maria',
-    score: 870,
+    name: 'Felipe Souza',
+    score: 1490,
+    level: 'bronze',
     position: 3,
+  },
+  {
+    name: 'Ana Lima',
+    score: 1320,
+    level: 'bronze',
+    position: 4,
   },
 ];
