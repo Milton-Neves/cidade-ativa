@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Sidebar } from '../sidebar/sidebar';
 import { Topbar } from '../topbar/topbar';
 import { RouterOutlet } from '@angular/router';
@@ -10,4 +10,10 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './dashboard-shell.html',
   styleUrl: './dashboard-shell.css',
 })
-export class DashboardShell {}
+export class DashboardShell {
+  sidebarOpen = signal(true);
+
+  toggleSidebar() {
+    this.sidebarOpen.update((value) => !value);
+  }
+}

@@ -4,4 +4,5 @@ export interface EventItem {
   location: string;
   participants: number;
   status: string;
+  district: string;
 }

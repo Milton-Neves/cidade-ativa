@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-topbar',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './topbar.html',
   styleUrl: './topbar.css',
 })
-export class Topbar {}
+export class Topbar {
+  toggleMenu = output<void>();
+}
