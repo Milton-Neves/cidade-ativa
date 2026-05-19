@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { LineChart } from '../../components/charts/line-chart/line-chart';
 import { ProgressChart } from '../../components/charts/progress-chart/progress-chart';
 import { ActivityFeed } from '../../components/sections/activity-feed/activity-feed';
@@ -27,6 +27,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class Home {
   private readonly dashboardService = inject(DashboardService);
 
+  selectedDistrict = signal('Todos');
+
   isTallyOpen = false;
 
   metrics = toSignal(this.dashboardService.getMetrics(), { initialValue: [] });
@@ -53,7 +55,9 @@ export class Home {
 
   activeEvents = computed(() => this.events().filter((event) => event.status === 'Ativo'));
 
-  activeEventsCount = computed(() => this.activeEvents().length);
+  activeEventsCount = computed(
+    () => this.filteredEvents().filter((event) => event.status === 'Ativo').length,
+  );
 
   averageParticipation = computed(() => {
     const data = this.analytics().participation;
@@ -68,4 +72,70 @@ export class Home {
   openTally() {
     this.isTallyOpen = true;
   }
+
+  filteredEvents = computed(() => {
+    if (this.selectedDistrict() === 'Todos') {
+      return this.events();
+    }
+
+    return this.events().filter((event) => event.district === this.selectedDistrict());
+  });
+
+  filteredRankings = computed(() => {
+    if (this.selectedDistrict() === 'Todos') {
+      return this.rankings();
+    }
+
+    return this.rankings().filter((ranking) => ranking.district === this.selectedDistrict());
+  });
+
+  districts = computed(() => {
+    const uniqueDistricts = new Set(this.events().map((event) => event.district));
+
+    return ['Todos', ...uniqueDistricts];
+  });
+
+  filteredMetrics = computed(() => {
+    const district = this.selectedDistrict();
+
+    if (district === 'Todos') {
+      return this.metrics();
+    }
+
+    return this.metrics().map((metric) => ({
+      ...metric,
+
+      value: `${Math.floor(Math.random() * 1000)}`,
+    }));
+  });
+
+  filteredAnalytics = computed(() => {
+
+  const district = this.selectedDistrict();
+
+  if (district === 'Todos') {
+    return this.analytics();
+  }
+
+  return {
+    ...this.analytics(),
+
+    users: this.analytics().users.map(
+      value => Math.floor(value * 0.6)
+    ),
+
+    events: this.analytics().events.map(
+      value => Math.floor(value * 0.5)
+    ),
+
+    participation: this.analytics().participation.map(
+      value => Math.floor(value * 0.7)
+    ),
+
+    completedActivities:
+      this.analytics().completedActivities.map(
+        value => Math.floor(value * 0.4)
+      ),
+  };
+});
 }

@@ -6,4 +6,6 @@ export interface RankingUser {
   level: 'gold' | 'silver' | 'bronze';
 
   position: number;
+
+  district: string;
 }

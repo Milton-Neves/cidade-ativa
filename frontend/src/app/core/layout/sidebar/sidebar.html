@@ -1,11 +1,68 @@
-<aside class="hidden md:flex w-64 flex-col border-r border-zinc-800 bg-zinc-900">
-  <div class="p-6 text-2xl font-bold">Cidade Ativa</div>
+<aside
+  class="hidden overflow-hidden flex-col border-r border-zinc-800 bg-zinc-900 transition-all duration-300 md:flex"
+  [class.w-64]="isOpen()"
+  [class.w-20]="!isOpen()"
+>
+  <div class="p-6 text-2xl font-bold">
+    @if (isOpen()) {
+      Cidade Ativa
+    } @else {
+      CA
+    }
+  </div>
 
-  <nav class="flex flex-col gap-2 p-4">
-    <a routerLink="/" class="rounded-lg px-4 py-3 hover:bg-zinc-800 transition"> Dashboard </a>
+  <nav
+    class="flex flex-col gap-2 transition-all duration-300"
+    [class.p-4]="isOpen()"
+    [class.p-2]="!isOpen()"
+  >
+    <a
+      routerLink="/"
+      routerLinkActive="bg-zinc-800 text-emerald-400"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex items-center gap-3 rounded-lg py-3 transition hover:bg-zinc-800"
+      [class.justify-start]="isOpen()"
+      [class.justify-center]="!isOpen()"
+      [class.px-4]="isOpen()"
+      [class.px-0]="!isOpen()"
+    >
+      <lucide-icon [img]="dashboardIcon" class="h-5 w-5" />
 
-    <a routerLink="/eventos" class="rounded-lg px-4 py-3 hover:bg-zinc-800 transition"> Eventos </a>
+      @if (isOpen()) {
+        <span>Dashboard</span>
+      }
+    </a>
 
-    <a routerLink="/ranking" class="rounded-lg px-4 py-3 hover:bg-zinc-800 transition"> Ranking </a>
+    <a
+      routerLink="/eventos"
+      routerLinkActive="bg-zinc-800 text-emerald-400"
+      class="flex items-center gap-3 rounded-lg py-3 transition hover:bg-zinc-800"
+      [class.justify-start]="isOpen()"
+      [class.justify-center]="!isOpen()"
+      [class.px-4]="isOpen()"
+      [class.px-0]="!isOpen()"
+    >
+      <lucide-icon [img]="eventsIcon" class="h-5 w-5" />
+
+      @if (isOpen()) {
+        <span>Eventos</span>
+      }
+    </a>
+
+    <a
+      routerLink="/ranking"
+      routerLinkActive="bg-zinc-800 text-emerald-400"
+      class="flex items-center gap-3 rounded-lg py-3 transition hover:bg-zinc-800"
+      [class.justify-start]="isOpen()"
+      [class.justify-center]="!isOpen()"
+      [class.px-4]="isOpen()"
+      [class.px-0]="!isOpen()"
+    >
+      <lucide-icon [img]="rankingIcon" class="h-5 w-5" />
+
+      @if (isOpen()) {
+        <span>Ranking</span>
+      }
+    </a>
   </nav>
 </aside>
